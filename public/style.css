@@ -1,0 +1,55 @@
+/* GLOBAL RESET */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #1A0F05; 
+    width: 100%; 
+    height: 100%;
+    overflow: hidden; /* Keeps the terminal feeling like a locked screen */
+}
+
+/* MAIN CONTAINER */
+.background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background: #1A0F05;
+    justify-content: center; 
+    padding: 0 30px; 
+    gap: 30px; 
+    box-sizing: border-box; 
+}
+
+/* COMMON PANEL STYLES */
+.left-panel, .middle-content, .right-panel {
+    height: 80%;            
+    align-self: center;           
+    background: rgba(26, 15, 5, 0.8); 
+    border: 1px solid #FFB000;
+    border-top: 25px solid #FFB000; /* The yellow title bar */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start text below the yellow bar */
+    padding-top: 20px;           /* Space between bar and text */
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+}
+
+/* SPECIFIC WIDTHS */
+.left-panel { width: 20%; }
+.middle-content { width: 50%; }
+.right-panel { width: 20%; }
+
+/* TERMINAL TEXT STYLING */
+h1 {
+    color: #FFB000;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    font-size: 1.2rem; /* Adjusted to fit the 20% side panels */
+    text-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
+    word-wrap: break-word;
+}
