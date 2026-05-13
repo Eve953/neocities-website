@@ -1,55 +1,105 @@
-/* GLOBAL RESET */
+/* 1. GLOBAL RESET & BASE STRUCTURE */
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #1A0F05; 
-    width: 100%; 
+    width: 100%;
     height: 100%;
-    overflow: hidden; /* Keeps the terminal feeling like a locked screen */
+    overflow: hidden; /* Locks the terminal screen in place */
+    background-color: #1A0F05;
 }
 
-/* MAIN CONTAINER */
+/* 2. MAIN VIEWPORT CONTAINER */
 .background {
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column; /* Stacks header on top of the panels */
     background: #1A0F05;
-    justify-content: center; 
-    padding: 0 30px; 
-    gap: 30px; 
+    align-items: center; 
+    justify-content: flex-start; 
+    padding: 20px 30px; 
+    gap: 20px; 
     box-sizing: border-box; 
+    
+    /* Grainy CRT/Phosphor Texture */
+    background-image: 
+        radial-gradient(circle, #26180B 0%, #0d0200 100%),
+        repeating-radial-gradient(#3D2714 0%, #1A0F05 1px, #0d0200 2px);
+    background-blend-mode: overlay;
+    background-size: cover, 4px 4px;
 }
 
-/* COMMON PANEL STYLES */
+/* 3. SITE HEADER (GHOST_TERMINAL) */
+.site-header {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.site-header h1 {
+    font-size: 3.5rem; 
+    letter-spacing: 15px; /* High-contrast editorial spacing */
+    color: #FFB000;
+    text-shadow: 0 0 15px rgba(255, 176, 0, 0.8);
+    border-bottom: 2px solid #FFB000;
+    display: inline-block;
+    padding-bottom: 5px;
+    font-family: 'VT323', monospace;
+}
+
+/* 4. MAIN LAYOUT (Columns side-by-side) */
+.main-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 75%; /* Leaves room for the header */
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Column Wrapper for stacking side boxes */
+.side-column {
+    width: 20%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+/* 5. PANEL COMPONENT STYLING */
 .left-panel, .middle-content, .right-panel {
-    height: 80%;            
-    align-self: center;           
     background: rgba(26, 15, 5, 0.8); 
     border: 1px solid #FFB000;
-    border-top: 25px solid #FFB000; /* The yellow title bar */
+    border-top: 25px solid #FFB000; /* Amber title bar */
     
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Start text below the yellow bar */
-    padding-top: 20px;           /* Space between bar and text */
+    justify-content: flex-start; 
+    padding: 15px;
+    padding-top: 20px; 
     box-sizing: border-box;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
 }
 
-/* SPECIFIC WIDTHS */
-.left-panel { width: 20%; }
-.middle-content { width: 50%; }
-.right-panel { width: 20%; }
+/* Content Sizes */
+.middle-content { width: 50%; height: 100%; }
+.top-box { height: 65%; width: 100%; }
+.bottom-box { 
+    height: 35%; 
+    width: 100%; 
+    border-top: 15px solid #FFB000; /* Thinner accent bar */
+}
 
-/* TERMINAL TEXT STYLING */
+/* 6. TYPOGRAPHY */
 h1 {
     color: #FFB000;
-    font-family: 'Courier New', monospace;
+    font-family: 'VT323', monospace;
     text-transform: uppercase;
     margin: 0;
     text-align: center;
-    font-size: 1.2rem; /* Adjusted to fit the 20% side panels */
+    font-size: 1.8rem; /* Increased size for visibility */
     text-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
     word-wrap: break-word;
 }
