@@ -84,6 +84,45 @@
                 </div>
                 <div class="right-panel bottom-box"> 
                     <h1>USER</h1>
+                    <div class="audio-panel" style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
+        <button class="sound-btn" data-freq="220" data-type="sine">NOISE_01</button>
+        <button class="sound-btn" data-freq="440" data-type="square">SCREECH_02</button>
+        <button class="sound-btn" data-freq="880" data-type="sawtooth">RACKET_03</button>
+       <script>
+  let soundButtons = document.querySelectorAll('.sound-btn');
+  
+  let context = null;
+
+  soundButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        let waveforms = ['sine', 'square', 'sawtooth', 'triangle'];
+        let frequencies = [220, 440, 880, 1760];
+        
+        let randomWaveform = waveforms[Math.floor(Math.random() * waveforms.length)];
+        let randomFrequency = frequencies[Math.floor(Math.random() * frequencies.length)];
+        
+        if (context === null) {
+            context = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        let oscillator = context.createOscillator();
+        let gainNode = context.createGain();
+
+        oscillator.type = randomWaveform;
+        oscillator.frequency.setValueAtTime(randomFrequency, context.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.1, context.currentTime); 
+        gainNode.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.5);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(context.destination);
+        
+        oscillator.start();
+        oscillator.stop(context.currentTime + 0.5);
+    });
+  });
+</script>
+    </div>
                 </div>
             </div>
 

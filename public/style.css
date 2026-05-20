@@ -129,3 +129,25 @@ pre {
     white-space: pre; 
     margin: 20px auto 0 auto;
 }
+
+
+.sound-btn {
+    background: transparent;
+    border: 1px solid #FFB000;
+    color: #FFB000;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    padding: 20px 40px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.sound-btn:hover {
+    background: #FFB000;
+    color: #1A0F05;
+    box-shadow: 0 0 8px #FFB000;
+}
+
+.sound-btn:active {
+    transform: scale(0.95);
+}
