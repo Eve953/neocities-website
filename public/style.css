@@ -151,3 +151,21 @@ pre {
 .sound-btn:active {
     transform: scale(0.95);
 }
+
+@keyframes phosphor-glow {
+    0%, 100% { text-shadow: 0 0 4px rgba(255, 176, 0, 0.4); }
+    50%      { text-shadow: 0 0 10px rgba(255, 176, 0, 0.7); }
+}
+
+/* Apply this directly to your headers or ASCII <pre> blocks */
+pre, h1 {
+    animation: phosphor-glow 0.2s infinite;
+}
+/* Pac-Man Cursor  */
+* {
+    cursor: url('https://cdn.cursors-4u.net/previews/pac-man-a11899cc-32.webp') 16 16, auto !important;
+}
+
+html, body {
+    filter: #FFB000 0.5; 
+}
