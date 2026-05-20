@@ -4,7 +4,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Locks the terminal screen in place */
+    overflow: hidden; /* Keeps the terminal workstation fixed */
     background-color: #1A0F05;
 }
 
@@ -13,7 +13,7 @@ html, body {
     height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column; /* Stacks header on top of the panels */
+    flex-direction: column; 
     background: #1A0F05;
     align-items: center; 
     justify-content: flex-start; 
@@ -29,7 +29,7 @@ html, body {
     background-size: cover, 4px 4px;
 }
 
-/* 3. SITE HEADER (GHOST_TERMINAL) */
+/* 3. SITE HEADER */
 .site-header {
     width: 100%;
     text-align: center;
@@ -38,24 +38,26 @@ html, body {
 }
 
 .site-header h1 {
+    font-family: 'VT323', monospace;
     font-size: 3.5rem; 
-    letter-spacing: 15px; /* High-contrast editorial spacing */
+    letter-spacing: 15px; 
     color: #FFB000;
     text-shadow: 0 0 15px rgba(255, 176, 0, 0.8);
     border-bottom: 2px solid #FFB000;
     display: inline-block;
     padding-bottom: 5px;
-    font-family: 'VT323', monospace;
+    margin: 0;
 }
 
-/* 4. MAIN LAYOUT (Columns side-by-side) */
+/* 4. MAIN LAYOUT (The horizontal container) */
 .main-layout {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 75%; /* Leaves room for the header */
+    flex-grow: 1; /* Stretches panels to fill bottom gap */
     justify-content: center;
     gap: 30px;
+    padding-bottom: 20px; /* Comfort gap at the very bottom */
 }
 
 /* Column Wrapper for stacking side boxes */
@@ -71,35 +73,59 @@ html, body {
 .left-panel, .middle-content, .right-panel {
     background: rgba(26, 15, 5, 0.8); 
     border: 1px solid #FFB000;
-    border-top: 25px solid #FFB000; /* Amber title bar */
+    
+    /* Standardized thickness for all top bands */
+    border-top: 20px solid #FFB000; 
     
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; 
     padding: 15px;
-    padding-top: 20px; 
+    padding-top: 10px; 
     box-sizing: border-box;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
 }
 
-/* Content Sizes */
+/* Specific box sizes within columns */
 .middle-content { width: 50%; height: 100%; }
-.top-box { height: 65%; width: 100%; }
-.bottom-box { 
-    height: 35%; 
+
+.top-box { 
+    height: 60%; 
     width: 100%; 
-    border-top: 15px solid #FFB000; /* Thinner accent bar */
 }
 
-/* 6. TYPOGRAPHY */
+.bottom-box { 
+    height: 40%; 
+    width: 100%; 
+    /* Standardized thickness to match everything else */
+    border-top: 20px solid #FFB000; 
+}
+
+/* 6. TYPOGRAPHY & ASCII */
 h1 {
     color: #FFB000;
     font-family: 'VT323', monospace;
     text-transform: uppercase;
     margin: 0;
     text-align: center;
-    font-size: 1.8rem; /* Increased size for visibility */
+    font-size: 2.5rem; 
     text-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
     word-wrap: break-word;
+}
+
+/* Centering and styling your custom ASCII art */
+pre {
+    font-family: 'VT323', monospace; 
+    font-size: 8px; /* Slightly smaller font size helps details align */
+    
+    /* CHANGE THESE LINES */
+    line-height: 1.4;       /* Adds breathing room between vertical rows */
+    letter-spacing: 2px;    /* Adds horizontal space between characters */
+    
+    color: #FFB000;
+    text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
+    margin: auto; 
+    white-space: pre; 
+    margin: 20px auto 0 auto;
 }
