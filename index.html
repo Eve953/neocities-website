@@ -2,40 +2,48 @@
 <html lang="en">
 
 <head>
-    <!-- Google Fonts  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- The VT323 Font Import -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-    <!-- style link -->
     <link rel="stylesheet" href="public/style.css">
     <title>GHOST_TERMINAL</title>
 </head>
 
 <body>
-    <!-- Background Container -->
     <div class="background">
 
         <header class="site-header">
             <h1 class="glitch-text">GHOST_TERMINAL</h1>
         </header>
 
-        <!-- Alignment wrapper -->
         <div class="main-layout">
 
-            <!-- Left Column: Stacked Panels -->
             <div class="side-column">
                 <div class="left-panel top-box">
                     <h1>NAV</h1>
                 </div>
-                <div class="left-panel bottom-box">
-                    <h1>LOGS</h1>
-                </div>
+                
+               <div class="left-panel bottom-box" style="display: flex; flex-direction: column; padding: 15px; box-sizing: border-box;">
+    <h1 style="margin: 0 0 10px 0;">LOGS</h1>
+    
+    <div style="flex-grow: 1; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start;">
+        <div id="fortune-output" style="color: #FFB000; font-family: 'VT323', monospace; font-size: 1.15rem; line-height: 1.3; text-transform: uppercase; font-style: italic; margin-bottom: 15px; min-height: 60px;">
+            SYSTEM READY. RUN EXECUTE_FORTUNE_COOKIE.EXE
+        </div>
+        
+        <div>
+            <button onclick="triggerLocalFortune()" class="terminal-btn" style="background: transparent; border: 1px solid #FFB000; color: #FFB000; font-family: 'VT323', monospace; padding: 8px 16px; cursor: pointer; letter-spacing: 2px; font-size: 1.3rem; text-transform: uppercase; width: 100%; box-sizing: border-box; transition: all 0.1s ease;">
+                [ EXECUTE_FORTUNE ]
+            </button>
+        </div>
+    </div>
+</div>
             </div>
 
-            <!-- Middle Main Content -->
             <div class="middle-content">
                 <h1>SYSTEM_CORE</h1>
                 <pre>
@@ -76,13 +84,23 @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@.*#--.-=+..%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    </pre>
+                </pre>
             </div>
 
             <div class="side-column">
-                <div class="right-panel top-box">
+                <div class="right-panel top-box" style="height: auto; min-height: 180px; padding-bottom: 15px; display: flex; flex-direction: column;">
                     <h1>STATS</h1>
+                    
+                    <div style="margin-top: 10px; width: 100%; box-sizing: border-box; overflow: hidden;">
+                        <iframe src="https://wttr.in/Tokyo?format=4" 
+                                width="100%" 
+                                height="60" 
+                                style="border: none; background: transparent; filter: sepia(100%) saturate(300%) hue-rotate(5deg); font-family: 'VT323', monospace;" 
+                                loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
+                
                 <div class="right-panel bottom-box">
                     <h1>USER</h1>
 
@@ -92,16 +110,17 @@
                         <button class="sound-btn" data-freq="440" data-type="square">SCREECH_02</button>
                         <button class="sound-btn" data-freq="880" data-type="sawtooth">RACKET_03</button>
                     </div>
-                    <div
-                        style="color: #FFB000; font-family: 'VT323', monospace; text-align: center; margin-top: 15px; letter-spacing: 2px;">
+                    
+                    <div style="color: #FFB000; font-family: 'VT323', monospace; text-align: center; margin-top: 15px; letter-spacing: 2px;">
                         -------------------------------------------------------
                     </div>
+                    
                     <div style="margin-top: 17px; display: flex; justify-content: center; padding: 0 16px;">
-    <a href="https://terminal.atabook.org" target="_blank" class="sound-btn flash-text"
-        style="display: flex; align-items: center; justify-content: center; width: 140px; height: 140px; text-align: center; text-decoration: none; box-sizing: border-box; font-size: 1.6rem; letter-spacing: 1px;">
-        GUESTBOOK
-    </a>
-</div>
+                        <a href="https://terminal.atabook.org" target="_blank" class="flash-text"
+                            style="display: flex; align-items: center; justify-content: center; width: 140px; height: 140px; text-align: center; text-decoration: none; box-sizing: border-box; font-size: 1.6rem; letter-spacing: 1px; color: #FFB000; border: 1px solid #FFB000; background: transparent; font-family: 'VT323', monospace; cursor: pointer; transition: all 0.1s ease;">
+                            GUESTBOOK
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -109,6 +128,26 @@
     </div>
 
     <script>
+        // --- 1. Local Fortune / Cyberpunk Log Array ---
+        const fortunes = [
+            '"YOU WILL HAVE A GOOD DAY TODAY!"',
+            '"THE FUTURE IS UNWRITTEN, BUT THE TERMINAL KNOWS."',
+            '"YOU WILL ENCOUNTER A MYSTERIOUS GLITCH IN THE SYSTEM."',
+            '"YOU WILL EAT SOMETHING DELICIOUS IN THE NEAR FUTURE."',
+            '"YOU WILL LEARN SOMETHING COOL TODAY!"',
+            '"YOU WILL FIND A HIDDEN EASTER EGG IN THIS WEBSITE."',
+            '"YOU WILL RUN INTO SOMEONE YOU USED TO KNOW SOMETIME SOON."',
+            '"YOU WILL DISCOVER A SECRET FEATURE IN THIS TERMINAL."',
+            '"YOU WILL HAVE FUN TODAY!"'
+        ];
+
+        function triggerLocalFortune() {
+            const outputElement = document.getElementById('fortune-output');
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            outputElement.textContent = fortunes[randomIndex];
+        }
+
+        // --- 2. Audio Matrix Script ---
         let soundButtons = document.querySelectorAll('.audio-panel .sound-btn');
         let context = null;
 
@@ -122,6 +161,10 @@
 
                 if (context === null) {
                     context = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
+                if (context.state === 'suspended') {
+                    context.resume();
                 }
 
                 let oscillator = context.createOscillator();
