@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Deploy files to Neocities
-      uses: bcomnes/deploy-to-neocities-action@v3
+      uses: neocities/deploy-to-neocities-action@v2
       with:
         api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
         cleanup: true
