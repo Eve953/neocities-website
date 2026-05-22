@@ -1,2 +1,2 @@
 neocities website inspired by the indie web; is a work in progress 
-<img width="2560" height="1382" alt="Screenshot 2026-05-20 at 11 49 13 PM" src="https://github.com/user-attachments/assets/75e5e746-0722-490e-b3d1-046c55731154" />
+<img width="5120" height="2880" alt="image" src="https://github.com/user-attachments/assets/7091677e-f0d5-488b-9928-c07a6cce764a" />
