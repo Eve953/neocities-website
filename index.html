@@ -32,14 +32,6 @@
                         <div class="window-controls"><span>▬</span><span>❐</span><span>✕</span></div>
                     </div>
                     <div class="panel-content">
-                        <div style="flex-grow: 1; width: 100%; height: 180px; box-sizing: border-box; overflow: hidden; border: 1px dashed #014539; position: relative;">
-                            <iframe
-                                src="https://cdn.abowman.com/widgets/fish/fish.html?up_backgroundColor=052d3a&up_numFish=6"
-                                width="100%" height="100%"
-                                style="border: none; background: #052d3a; position: absolute; top: 0; left: 0; pointer-events: auto;"
-                                loading="lazy">
-                            </iframe>
-                        </div>
 
                         <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; gap: 15px; margin-top: 20px; width: 100%;">
                             <iframe width="314" height="321" scrolling="no"
@@ -51,6 +43,14 @@
                                     <img src="https://tamanotchi.world/i2/33031" style="display: block;" alt="It's tamaNOTchi! Click to feed!">
                                 </a>
                             </div>
+                            <div style="flex-grow: 1; width: 100%; height: 180px; box-sizing: border-box; overflow: hidden; border: 1px dashed #014539; position: relative;">
+                            <iframe
+                                src="https://cdn.abowman.com/widgets/fish/fish.html?up_backgroundColor=052d3a&up_numFish=6"
+                                width="100%" height="100%"
+                                style="border: none; background: #052d3a; position: absolute; top: 0; left: 0; pointer-events: auto;"
+                                loading="lazy">
+                            </iframe>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -108,23 +108,18 @@
                         <span class="panel-title">ENVIRONMENT_STATS</span>
                         <div class="window-controls"><span>▬</span><span>❐</span><span>✕</span></div>
                     </div>
-                    <div class="panel-content" style="display: flex; flex-direction: column; gap: 12px; padding: 10px;">
-                        <div style="width: 100%; box-sizing: border-box; overflow: hidden; background: #052d3a; border: 1px solid #014539; padding: 4px;">
-                            <iframe src="https://wttr.in/Tokyo?format=4" width="100%" height="40"
-                                style="border: none; background: transparent; font-family: 'VT323', monospace;"
+                    <div class="panel-content" style="display: flex; flex-direction: column; gap: 12px; padding: 10px; overflow-y: auto;">
+                        
+                        <div style="width: 100%; height: 50px; min-height: 50px; box-sizing: border-box; overflow: hidden; background: #052d3a; border: 1px solid #014539; padding: 4px; display: flex; align-items: center;">
+                            <iframe src="https://wttr.in/Tokyo?format=4" width="100%" height="100%"
+                                style="border: none; background: transparent; font-family: 'VT323', monospace; color: #4ea366;"
                                 loading="lazy">
                             </iframe>
                         </div>
                         
-                        <div style="width: 100%; box-sizing: border-box; border: 1px solid #014539; background: #000000; padding: 4px;">
-                            <a class="weatherwidget-io" href="https://forecast7.com/en/35_68139_65/tokyo/" data-label_1="TOKYO" data-label_2="WEATHER" data-font="Courier New" data-theme="pure" data-basecolor="#000000" data-textcolor="#4ea366" style="display: block;">TOKYO WEATHER</a>
-                            <script>
-                            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io');
-                            </script>
-                        </div>
 
-                        <div class="iss-container" style="width: 100%; box-sizing: border-box; background: #000000; padding: 4px;">
-                            <iframe width="100%" height="270" 
+                        <div class="iss-container" style="width: 100%; box-sizing: border-box; background: #000000; padding: 4px; flex-grow: 1; min-height: 180px;">
+                            <iframe width="100%" height="100%" 
                                     src="https://isstracker.pl/en/widget/map?&disableInfoBox=1&lang=en&z=2&mapType=satellite&units=metric&preloader=1&showSatTooltip=0&dayNightLayer=1&showFutureOrbit=1" 
                                     style="border: 1px solid #014539; background: #000000; display: block;"
                                     loading="lazy">

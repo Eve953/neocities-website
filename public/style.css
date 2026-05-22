@@ -11,6 +11,17 @@ html, body {
     background-color: #131b22; /* Deep Slate Base */
 }
 
+/* Fix Oneko ghost layout spacing */
+#nl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+    font-size: 0; /* hides the text link safely */
+}
+
 .background {
     height: 100vh;
     width: 100vw;
@@ -18,8 +29,8 @@ html, body {
     flex-direction: column; 
     align-items: center; 
     justify-content: flex-start; 
-    padding: 20px 30px; 
-    gap: 15px; 
+    padding: 15px 20px; 
+    gap: 10px; 
     box-sizing: border-box; 
     
     /* Subtle neon matrix grid overlay */
@@ -32,12 +43,12 @@ html, body {
 .site-header {
     width: 100%;
     text-align: center;
-    padding: 5px 0;
+    padding: 2px 0;
 }
 
 .site-header h1 {
     font-family: 'VT323', monospace;
-    font-size: 3rem; 
+    font-size: 2.8rem; 
     letter-spacing: 6px; 
     color: #4ea366; /* Vibrant Matrix Terminal Green */
     text-shadow: 2px 2px 0px #052d3a;
@@ -49,18 +60,20 @@ html, body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    flex-grow: 1;
+    height: calc(100vh - 80px); /* Keeps everything strictly within view bounds */
     justify-content: center;
-    gap: 20px;
-    padding-bottom: 15px;
+    gap: 15px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
 }
 
+/* Widened slightly to prevent Tamagotchi/Gifypet blowout */
 .side-column {
-    width: 22%;
+    width: 340px; 
     height: 100%; 
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 15px; 
 }
 
 /* MODULAR WINDOW SHELLS */
@@ -76,12 +89,17 @@ html, body {
 }
 
 .middle-content { 
-    width: 56%; 
+    flex-grow: 1; /* Dynamically takes remaining space */
     height: 100%; 
 }
 
-.top-box { height: 50%; width: 100%; }
-.bottom-box { height: 50%; width: 100%; }
+/* Split side boxes beautifully and handle overflow safely */
+.top-box, .bottom-box { 
+    height: 50%; 
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+}
 
 /* WINDOW INTERFACE BARS */
 .panel-header {
@@ -91,6 +109,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .panel-title {
@@ -108,11 +127,13 @@ html, body {
     cursor: pointer;
 }
 
+/* Scroll wrapper fixes so content doesn't break boundaries */
 .panel-content {
-    padding: 12px;
+    padding: 10px;
     flex-grow: 1;
-    overflow: hidden;
+    overflow-y: auto; /* Adds custom internal scrolling if text/widgets run long */
     background: #052d3a;
+    box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -126,6 +147,7 @@ html, body {
     gap: 12px;
     overflow-y: auto !important;
     border-bottom: 2px dashed #014539;
+    flex-grow: 1;
 }
 
 /* Core Sticker Box Units */
@@ -151,21 +173,10 @@ html, body {
    SHAPE MODIFIER CLASSES 
    ========================================================================== */
 
-.w-double {
-    grid-column: span 2;
-}
-
-.w-triple {
-    grid-column: span 3;
-}
-
-.h-double {
-    grid-row: span 2;
-}
-
-.h-triple {
-    grid-row: span 3;
-}
+.w-double { grid-column: span 2; }
+.w-triple { grid-column: span 3; }
+.h-double { grid-row: span 2; }
+.h-triple { grid-row: span 3; }
 
 /* ==========================================================================
    INTERACTIVE BUTTONS, SCROLLBARS, & ELEMENTS
@@ -211,7 +222,7 @@ html, body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 90px;
+    height: 60px; /* Shrunk down slightly to ensure audio panel matches */
     text-align: center;
     font-size: 1.8rem;
     color: #131b22;
@@ -233,18 +244,21 @@ html, body {
     padding: 12px;
     background: #131b22;
     border-top: 2px solid #014539;
+    flex-shrink: 0;
 }
 
 .central-flex { display: flex; align-items: center; justify-content: center; text-align: center; }
 .square-fit { display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
 
-.dynamic-playground-scroller::-webkit-scrollbar { width: 6px; }
-.dynamic-playground-scroller::-webkit-scrollbar-track { background: #052d3a; }
-.dynamic-playground-scroller::-webkit-scrollbar-thumb { background: #014539; border-radius: 3px; }
+/* Scrollbar tweaks */
+.dynamic-playground-scroller::-webkit-scrollbar,
+.panel-content::-webkit-scrollbar { width: 6px; }
+.dynamic-playground-scroller::-webkit-scrollbar-track,
+.panel-content::-webkit-scrollbar-track { background: #052d3a; }
+.dynamic-playground-scroller::-webkit-scrollbar-thumb,
+.panel-content::-webkit-scrollbar-thumb { background: #014539; border-radius: 3px; }
 
 /* Custom cursor integration overlay */
 * {
-
-      cursor: url('https://cdn.cursors-4u.net/previews/cool-blue-pointer-e525971e-32.webp') 32 32, auto !important;
-
-}/* force update */
+    cursor: url('https://cdn.cursors-4u.net/previews/cool-blue-pointer-e525971e-32.webp') 32 32, auto !important;
+}
