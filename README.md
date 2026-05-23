@@ -1,2 +1,3 @@
 neocities website inspired by the indie web; is a work in progress. Check out the site at this link: https://scaryghost.neocities.org
-<img width="5120" height="2717" alt="image" src="https://github.com/user-attachments/assets/b247a75d-91b8-4b72-a11e-61f3276b7a28" />
+<img width="1919" height="907" alt="image" src="https://github.com/user-attachments/assets/3d662e28-0d86-4f17-a787-40937e73d178" />
+
